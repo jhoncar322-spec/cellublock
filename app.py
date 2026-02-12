@@ -163,13 +163,24 @@ class MobileFinancePlatform:
     
     def transfer(self, transaction_id: str, from_account_id: str, to_account_id: str, 
                  amount: float, description: str = '') -> bool:
-        """Transfer money between accounts"""
+        """
+        Transfer money between accounts.
+        
+        NOTE: This implementation is simplified for demonstration.
+        Production systems should use atomic transactions with proper rollback
+        mechanisms to ensure consistency if the system fails mid-transfer.
+        """
         if from_account_id not in self.accounts or to_account_id not in self.accounts:
             return False
         
         from_account = self.accounts[from_account_id]
         to_account = self.accounts[to_account_id]
         
+        # Verify sufficient funds before proceeding
+        if from_account.balance < amount or amount <= 0:
+            return False
+        
+        # Perform transfer (in production, this should be atomic)
         if from_account.withdraw(amount):
             to_account.deposit(amount)
             transaction = Transaction(transaction_id, from_account_id, 'transfer', amount, 

@@ -197,7 +197,7 @@ if __name__ == '__main__':
     print("\n")
     print("*" * 60)
     print("  MOBILE FINANCE PLATFORM - EJEMPLOS DE USO")
-    print("  Plataforma de Financiero Móviles - Cellublock")
+    print("  Plataforma Financiera Móvil - Cellublock")
     print("*" * 60)
     
     # Run all examples

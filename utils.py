@@ -5,29 +5,22 @@ Utility functions for the Mobile Finance Platform
 from datetime import datetime
 from typing import Any, Dict
 import hashlib
-import random
-import string
+import uuid
 
 
 def generate_transaction_id() -> str:
-    """Generate a unique transaction ID"""
-    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-    random_suffix = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
-    return f"TXN{timestamp}{random_suffix}"
+    """Generate a unique transaction ID using UUID"""
+    return f"TXN{uuid.uuid4().hex[:16].upper()}"
 
 
 def generate_account_id() -> str:
-    """Generate a unique account ID"""
-    timestamp = datetime.now().strftime('%Y%m%d')
-    random_suffix = ''.join(random.choices(string.digits, k=8))
-    return f"ACC{timestamp}{random_suffix}"
+    """Generate a unique account ID using UUID"""
+    return f"ACC{uuid.uuid4().hex[:16].upper()}"
 
 
 def generate_user_id() -> str:
-    """Generate a unique user ID"""
-    timestamp = datetime.now().strftime('%Y%m%d')
-    random_suffix = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
-    return f"USR{timestamp}{random_suffix}"
+    """Generate a unique user ID using UUID"""
+    return f"USR{uuid.uuid4().hex[:16].upper()}"
 
 
 def format_currency(amount: float, currency_symbol: str = "€") -> str:
@@ -62,7 +55,14 @@ def validate_phone(phone: str) -> bool:
 
 
 def hash_password(password: str) -> str:
-    """Hash a password using SHA-256"""
+    """
+    Hash a password using SHA-256.
+    
+    WARNING: SHA-256 is NOT recommended for production password hashing.
+    For production systems, use bcrypt, scrypt, or argon2 which are
+    specifically designed for password hashing and resistant to brute-force attacks.
+    This implementation is for demonstration purposes only.
+    """
     return hashlib.sha256(password.encode()).hexdigest()
 
 
