@@ -1,0 +1,9 @@
+# Python Standard Library - No external dependencies required
+# The platform uses only built-in Python modules
+
+# For future extensions, consider:
+# flask>=2.0.0  # For web API server
+# sqlalchemy>=1.4.0  # For database ORM
+# pyjwt>=2.0.0  # For JWT authentication
+# cryptography>=3.4.0  # For enhanced security
+# requests>=2.26.0  # For API clients
