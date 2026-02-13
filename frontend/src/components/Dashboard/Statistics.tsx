@@ -11,7 +11,7 @@ import {
   CheckCircle as ActiveIcon,
   Block as BlockedIcon
 } from '@mui/icons-material';
-import { Statistics as StatsType } from '../../../types';
+import { Statistics as StatsType } from '../../types';
 
 interface StatisticsProps {
   statistics: StatsType;

@@ -17,7 +17,7 @@ import {
   CheckCircle as UnblockIcon,
   Delete as DeleteIcon
 } from '@mui/icons-material';
-import { Device } from '../../../types';
+import { Device } from '../../types';
 
 interface DeviceListProps {
   devices: Device[];

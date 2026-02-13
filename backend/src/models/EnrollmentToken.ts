@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-export interface IEnrollmentToken extends Document {
+export interface IEnrollmentToken {
   token: string;
   qrCodeData: string;
   expiresAt: Date;
@@ -51,4 +51,4 @@ const EnrollmentTokenSchema = new Schema({
   timestamps: true
 });
 
-export default mongoose.model<IEnrollmentToken>('EnrollmentToken', EnrollmentTokenSchema);
+export default mongoose.model<IEnrollmentToken & Document>('EnrollmentToken', EnrollmentTokenSchema);

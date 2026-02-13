@@ -5,7 +5,7 @@ import {
   Typography,
   Chip
 } from '@mui/material';
-import { Device } from '../../../types';
+import { Device } from '../../types';
 
 interface DeviceCardProps {
   device: Device;

@@ -7,7 +7,7 @@ export interface IBlockHistory {
   adminId: mongoose.Types.ObjectId;
 }
 
-export interface IDevice extends Document {
+export interface IDevice {
   deviceId: string;
   model: string;
   brand: string;
@@ -108,4 +108,4 @@ const DeviceSchema = new Schema({
   timestamps: true
 });
 
-export default mongoose.model<IDevice>('Device', DeviceSchema);
+export default mongoose.model<IDevice & Document>('Device', DeviceSchema);

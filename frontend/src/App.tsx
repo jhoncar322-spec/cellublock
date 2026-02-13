@@ -9,6 +9,7 @@ import LoginPage from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Devices from './pages/Devices';
 import EnrollDevice from './pages/EnrollDevice';
+import Logs from './pages/Logs';
 
 const theme = createTheme({
   palette: {
@@ -42,6 +43,7 @@ const App: React.FC = () => {
                           <Route path="/dashboard" element={<Dashboard />} />
                           <Route path="/devices" element={<Devices />} />
                           <Route path="/enroll" element={<EnrollDevice />} />
+                          <Route path="/logs" element={<Logs />} />
                           <Route path="/" element={<Navigate to="/dashboard" />} />
                         </Routes>
                       </Box>

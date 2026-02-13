@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-export interface IAuditLog extends Document {
+export interface IAuditLog {
   action: string;
   deviceId?: mongoose.Types.ObjectId;
   adminId: mongoose.Types.ObjectId;
@@ -41,4 +41,4 @@ const AuditLogSchema = new Schema({
   timestamps: true
 });
 
-export default mongoose.model<IAuditLog>('AuditLog', AuditLogSchema);
+export default mongoose.model<IAuditLog & Document>('AuditLog', AuditLogSchema);
