@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
   Box,
@@ -34,7 +34,7 @@ const Devices: React.FC = () => {
   const [reason, setReason] = useState('');
   const [error, setError] = useState('');
 
-  const fetchDevices = async () => {
+  const fetchDevices = useCallback(async () => {
     try {
       const params: any = {};
       if (statusFilter) params.status = statusFilter;
@@ -47,11 +47,11 @@ const Devices: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [statusFilter, search]);
 
   useEffect(() => {
     fetchDevices();
-  }, [statusFilter, search]);
+  }, [fetchDevices]);
 
   const handleView = async (deviceId: string) => {
     try {

@@ -35,7 +35,7 @@ export const generateQR = async (req: AuthRequest, res: Response): Promise<void>
     await AuditLog.create({
       action: 'qr_generated',
       adminId: req.admin.adminId,
-      details: { token, expiresAt }
+      details: { expiresAt }
     });
     
     res.json({

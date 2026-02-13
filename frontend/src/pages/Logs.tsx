@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
   Box,
@@ -23,7 +23,7 @@ const Logs: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [search, setSearch] = useState('');
 
-  const fetchLogs = async () => {
+  const fetchLogs = useCallback(async () => {
     try {
       const params: any = { page, limit: 20 };
       if (search) params.deviceId = search;
@@ -36,11 +36,11 @@ const Logs: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, search]);
 
   useEffect(() => {
     fetchLogs();
-  }, [page, search]);
+  }, [fetchLogs]);
 
   const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
